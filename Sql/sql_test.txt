@@ -1,0 +1,25 @@
+SELECT DISTINCT TOP (100) PERCENT dbo.users.fName, dbo.users.lName
+FROM            dbo.memberships INNER JOIN
+                         dbo.groups ON dbo.memberships.group_id = dbo.groups.id INNER JOIN
+                         dbo.users ON dbo.memberships.user_id = dbo.users.id
+WHERE        (dbo.groups.name = N'A')
+ORDER BY dbo.users.lName, dbo.users.fName
+
+
+
+SELECT DISTINCT TOP (100) PERCENT dbo.users.fName, dbo.users.lName
+FROM            dbo.memberships INNER JOIN
+                         dbo.groups ON dbo.memberships.group_id = dbo.groups.id INNER JOIN
+                         dbo.users ON dbo.memberships.user_id = dbo.users.id
+WHERE        (dbo.groups.name IN (N'A', N'B'))
+ORDER BY dbo.users.lName, dbo.users.fName
+
+
+
+SELECT DISTINCT TOP (100) PERCENT dbo.users.fName, dbo.users.lName
+FROM            dbo.memberships INNER JOIN
+                         dbo.groups ON dbo.memberships.group_id = dbo.groups.id INNER JOIN
+                         dbo.users ON dbo.memberships.user_id = dbo.users.id
+WHERE        dbo.groups.name ='A' and  dbo.groups.name = 'B'
+ORDER BY dbo.users.lName, dbo.users.fName
+
