@@ -1,0 +1,132 @@
+
+<!DOCTYPE html>
+<html >
+    <head>
+        <meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        
+       
+        <script src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
+        <script  type="text/javascript"> 
+              function Run_FizzBuzz(){
+               
+                 var result = '';
+                 var fromNumber = $('#fromNumber').val();
+                 if (fromNumber == NaN)
+                 {
+                   fromNumber = 1;
+                 }
+                 var toNumber = $('#toNumber').val();
+                 if (toNumber == NaN){
+                   toNumber = 100;
+                 }
+                 var customValue = $('#customValue').val();
+                 var customDisplay = $('#customDisplay').val();
+                 var customValue1 = $('#customValue1').val();
+                 var customDisplay1 = $('#customDisplay1').val();
+                  var customValue2 = $('#customValue2').val();
+                 var customDisplay2 = $('#customDisplay2').val();
+                  var customValue3 = $('#customValue3').val();
+                 var customDisplay3 = $('#customDisplay3').val();
+
+                 if (fromNumber > toNumber) {
+                   var tempValue = fromNumber;
+                   toNumber = fromNumber;
+                   fromNumber = tempValue;
+                 }
+
+                 var handle_data = function(func) {
+                   var x =2;
+                   var y = 3;
+                   return func(x, y);
+                 }
+
+                 eval('var fun1 = function (a) { return (' + customValue + ') ? true : false ; }');
+                 eval('var fun2 = function (a) { return (' + customValue1 + ') ? true : false ; }');
+                 eval('var fun3 = function (a) { return (' + customValue2 + ') ? true : false ; }');
+                 eval('var fun4 = function (a) { return (' + customValue3 + ') ? true : false ; }');
+                   // result +=  add(3,4);
+
+                  for (var i = fromNumber; i <= toNumber; i++) {  
+                      if ( fun1(i) == true ) {
+                        result +=  customDisplay +  '<br >';
+                      }
+                      else if (  fun2(i) == true) {
+                        
+                         result +=  customDisplay1 +  '<br >';
+                      }
+                      else if (  fun3(i) == true) {
+                        
+                         result +=  customDisplay2 +  '<br >';
+                      }
+                      else if (  fun4(i) == true) {
+                        
+                         result +=  customDisplay3 +  '<br >';
+                      }
+                      else {
+                       result += i + '<br >';
+                      }
+                    }
+
+                    return result;
+              }
+
+              $(document).ready(function(){
+            //Get
+            var bla = $('#txt_name').val();
+
+              //Set
+             // $('#txt_name').val(bla);
+                $("#btnSubmit").click(function(){
+                  var result = Run_FizzBuzz();
+                 // alert(result);
+                  $("#numbers").each(function() {
+                    this.innerHTML = result;
+                  });
+                }); 
+
+                // $(".numbers").each(function() {
+                //     this.innerHTML += " " + (key+1) + "/"+count;
+                // });
+
+              });
+        </script>
+        
+        <title>Super FizzBuzz Application </title>
+    </head>
+ 
+    <body>
+        <div >
+            <h1 >Super FizzBuzz Application</h1>
+            <label>From Value</label>
+            <input type="text" id="fromNumber" value = "1" />
+            <label>To Value</label>
+            <input type="text" id="toNumber" value = "100" />
+            <input id = "btnSubmit" type="submit" value="Display"/>
+            <br/>
+            <label>Custom Value</label>
+            <input type="text" style="width:400px" id="customValue" value="a % 3 == 0" />
+            <label>Custom Display</label>
+            <input type="text" id="customDisplay"  value ="Fizz"/>
+            <br/>
+            <label>Custom Value</label>
+            <input type="text" style="width:400px" id="customValue1"  value="a % 7 == 0" />
+            <label>Custom Display</label>
+            <input type="text" id="customDisplay1" value="Buzz" />
+            <br/>
+            <label>Custom Value</label>
+            <input type="text" style="width:400px" id="customValue2" value="a % 38 == 0" />
+            <label>Custom Display</label>
+            <input type="text" id="customDisplay2" value="Bazz" />
+            <br/>
+            <label>Custom Value</label>
+            <input type="text" style="width:400px" id="customValue3"  value="a > 0 && Math.sqrt(a) % 1 === 0" />
+            <label>Custom Display</label>
+            <input type="text" id="customDisplay3" value= "Circle" />
+            <br />
+            <div id="numbers"></div>
+
+        </div>
+    </body>
+</html>
